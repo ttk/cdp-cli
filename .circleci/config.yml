@@ -7,11 +7,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install npm
-          command: npm install -g npm@latest
-      - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: show version
+          command: node ./build/index.js -v
 
 workflows:
   say-hello-workflow:
